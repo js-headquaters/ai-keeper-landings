@@ -418,7 +418,18 @@
         <!-- Contact Section -->
         <section class="contact-section">
             <h3 style="margin-bottom: 20px; font-size: 1.5rem;">Есть вопросы или предложения?</h3>
-            <form class="contact-form" netlify>
+            <form
+              class="contact-form" 
+              netlify-honeypot="devagar"
+              data-netlify="true"
+            >
+                <p style="display: none;">
+                    <label>
+                        Don't fill this out if you are human: <input name="devagar" type="text" />
+                    </label>
+                </p>
+
+                <input type="hidden" name="form-name" value="Contact form" />
                 <input type="text" placeholder="Ваше имя" required>
                 <input type="email" placeholder="Email для связи" required>
                 <textarea rows="4" placeholder="Ваш вопрос или предложение" required></textarea>
@@ -436,7 +447,6 @@
 
         // Обработка формы
         document.querySelector('.contact-form button').addEventListener('click', function(e) {
-            e.preventDefault();
             alert('Спасибо за сообщение! Мы свяжемся с вами в ближайшее время.');
             // Здесь должна быть реальная отправка формы
         });
