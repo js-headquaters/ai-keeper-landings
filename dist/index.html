@@ -446,9 +446,20 @@
         });
 
         // Обработка формы
-        document.querySelector('.contact-form button').addEventListener('click', function(e) {
-            alert('Спасибо за сообщение! Мы свяжемся с вами в ближайшее время.');
-            // Здесь должна быть реальная отправка формы
+
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const myForm = e.target;
+            const formData = new FormData(myForm);
+
+            fetch("/", {
+                method: "POST",
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: new URLSearchParams(formData).toString()
+            })
+            .then(() =>  alert('Спасибо за сообщение! Мы свяжемся с вами в ближайшее время.'))
+            .catch(error => alert(error));
         });
 
         // Функции для модального окна "Нет Telegram"
