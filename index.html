@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Учёт расходов простым разговором</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .hero {
+            text-align: center;
+            padding: 60px 0;
+            color: white;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero .subtitle {
+            font-size: 1.4rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+        
+        .pain-section {
+            background: white;
+            border-radius: 20px;
+            padding: 50px 40px;
+            margin: 40px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .pain-title {
+            font-size: 2.5rem;
+            color: #e74c3c;
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+        
+        .pain-list {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+        
+        .pain-list li {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            padding-left: 40px;
+            position: relative;
+        }
+        
+        .pain-list li::before {
+            content: "❌";
+            position: absolute;
+            left: 0;
+            font-size: 1.4rem;
+        }
+        
+        .solution-section {
+            background: #f8f9ff;
+            border-radius: 20px;
+            padding: 50px 40px;
+            margin: 40px 0;
+        }
+        
+        .solution-title {
+            font-size: 2.5rem;
+            color: #27ae60;
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+        
+        .features {
+            display: grid;
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .feature {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        
+        .feature h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        
+        .feature p {
+            color: #666;
+            font-size: 1rem;
+        }
+        
+        .demo-section {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin: 40px 0;
+            text-align: center;
+        }
+        
+        .demo-title {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+        
+        .demo-example {
+            background: #f1f3f4;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 20px 0;
+            font-size: 1.1rem;
+            border-left: 5px solid #3498db;
+        }
+        
+        .cta-section {
+            text-align: center;
+            padding: 60px 0;
+            color: white;
+        }
+        
+        .cta-title {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .cta-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: #e74c3c;
+            color: white;
+            padding: 20px 50px;
+            font-size: 1.4rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(231, 76, 60, 0.3);
+        }
+        
+        .cta-button:hover {
+            background: #c0392b;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(231, 76, 60, 0.4);
+        }
+        
+        .social-proof {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+        
+        .contact-section {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 40px;
+            margin-top: 40px;
+            text-align: center;
+            color: white;
+        }
+        
+        .contact-form {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.9);
+        }
+        
+        .contact-form button {
+            width: 100%;
+            background: #27ae60;
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        
+        .contact-form button:hover {
+            background: #219a52;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero .subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .pain-section, .solution-section, .demo-section {
+                padding: 30px 20px;
+            }
+            
+            .pain-title, .solution-title {
+                font-size: 2rem;
+            }
+            
+            .cta-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>Учёт расходов простым разговором</h1>
+            <p class="subtitle">Записывайте траты голосом за секунды. Прямо в Telegram.</p>
+        </section>
+
+        <!-- Pain Section -->
+        <section class="pain-section">
+            <h2 class="pain-title">Знакомо?</h2>
+            <ul class="pain-list">
+                <li>Покупаете что-то, но забываете записать расход</li>
+                <li>Таблицы и приложения кажутся слишком сложными</li>
+                <li>Руки заняты, а нужно зафиксировать трату</li>
+                <li>Не знаете, в какую категорию отнести покупку</li>
+                <li>В конце месяца не понимаете, куда ушли деньги</li>
+            </ul>
+            <p style="text-align: center; font-size: 1.3rem; color: #e74c3c; font-weight: 600;">
+                Результат: вы не ведёте учёт и тратите больше, чем планировали
+            </p>
+        </section>
+
+        <!-- Solution Section -->
+        <section class="solution-section">
+            <h2 class="solution-title">Решение проще, чем кажется</h2>
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-icon">🎤</div>
+                    <h3>Говорите как есть</h3>
+                    <p>"Купил кофе за 200 рублей" — готово! Бот сам поймёт и запишет.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">⚡</div>
+                    <h3>За 5 секунд</h3>
+                    <p>Никаких форм и категорий. Сказали голосовым — расход записан.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🤖</div>
+                    <h3>Умная категоризация</h3>
+                    <p>Бот сам определяет категорию: еда, транспорт, развлечения и другие.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">📱</div>
+                    <h3>Прямо в Telegram</h3>
+                    <p>Не нужно скачивать приложение — всё работает в привычном мессенджере.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Полная приватность</h3>
+                    <p>Ваши финансы видите только вы. Никаких облачных сервисов.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">📊</div>
+                    <h3>Простая аналитика</h3>
+                    <p>Отчёты за день, неделю, месяц. Понимайте, куда уходят деньги.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Demo Section -->
+        <section class="demo-section">
+            <h2 class="demo-title">Как это работает</h2>
+            <div class="demo-example">
+                <strong>🎤 Вы:</strong> "Потратил 1200 рублей на продукты в Пятёрочке"<br><br>
+                <strong>🤖 Бот:</strong> "Записал расход: 1200₽ в категории 'Продукты' ✅"
+            </div>
+            <div class="demo-example">
+                <strong>💬 Вы:</strong> "Покажи расходы за неделю"<br><br>
+                <strong>📊 Бот:</strong> Показывает все траты с разбивкой по категориям
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <h2 class="cta-title">Попробуйте прямо сейчас</h2>
+            <p class="cta-subtitle">Бесплатно. Без регистрации. За 30 секунд.</p>
+            <a href="https://t.me/aikeeper_bot" class="cta-button">Запустить бота</a>
+            <div class="social-proof">
+                <p>💬 Напишите боту любой расход и убедитесь сами</p>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact-section">
+            <h3 style="margin-bottom: 20px; font-size: 1.5rem;">Есть вопросы или предложения?</h3>
+            <div class="contact-form">
+                <input type="text" placeholder="Ваше имя" required>
+                <input type="email" placeholder="Email для связи" required>
+                <textarea rows="4" placeholder="Ваш вопрос или предложение" required></textarea>
+                <button type="submit">Отправить</button>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Простая аналитика кликов
+        document.querySelector('.cta-button').addEventListener('click', function() {
+            // Здесь можно добавить отправку события в Google Analytics или другую систему
+            console.log('Клик по кнопке "Запустить бота"');
+        });
+
+        // Обработка формы
+        document.querySelector('.contact-form button').addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('Спасибо за сообщение! Мы свяжемся с вами в ближайшее время.');
+            // Здесь должна быть реальная отправка формы
+        });
+    </script>
+</body>
+</html>
