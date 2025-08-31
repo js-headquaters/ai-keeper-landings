@@ -438,10 +438,38 @@
         </section>
     </div>
 
+    <!-- Load Amplitude first -->
+    <script src="https://cdn.amplitude.com/script/b7dfb3af9236b4027d45a291abe09602.js"></script>
     <script>
+        // Initialize Amplitude
+        window.amplitude.add(window.sessionReplay.plugin({sampleRate: 1}));
+        window.amplitude.init('b7dfb3af9236b4027d45a291abe09602', {"fetchRemoteConfig":true,"autocapture":true});
+        
+        // get or create uuid
+        function getOrCreateUserId() {
+            const storageKey = 'ai_keeper_user_id';
+            let userId = localStorage.getItem(storageKey);
+            
+            if (!userId) {
+                // Generate new UUID if none exists
+                userId = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+                    const r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+                    return v.toString(16);
+                });
+                // Save to localStorage for future visits
+                localStorage.setItem(storageKey, userId);
+            }
+            
+            return userId;
+        }
+
+        amplitude.setUserId(getOrCreateUserId());
+        amplitude.track('Landing.PageView');
+
         // Простая аналитика кликов
         document.querySelector('.cta-button').addEventListener('click', function() {
             // Здесь можно добавить отправку события в Google Analytics или другую систему
+            amplitude.track('Landing.CTA.Click');
             console.log('Клик по кнопке "Запустить бота"');
         });
 
@@ -449,6 +477,8 @@
 
         document.querySelector('.contact-form').addEventListener('submit', function(e) {
             e.preventDefault();
+
+            amplitude.track('Landing.ContactForm.Submit');
 
             const myForm = e.target;
             const formData = new FormData(myForm);
@@ -464,10 +494,12 @@
 
         // Функции для модального окна "Нет Telegram"
         function showNoTelegramInfo() {
+            amplitude.track('Landing.NoTelegramInfo.Show');
             document.getElementById('no-telegram-info').style.display = 'flex';
         }
 
         function hideNoTelegramInfo() {
+            amplitude.track('Landing.NoTelegramInfo.Close');
             document.getElementById('no-telegram-info').style.display = 'none';
         }
 
