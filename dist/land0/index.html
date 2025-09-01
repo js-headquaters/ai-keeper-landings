@@ -506,6 +506,7 @@
         document.querySelector('.cta-button').addEventListener('click', function() {
             // Здесь можно добавить отправку события в Google Analytics или другую систему
             amplitude.track('Landing.CTA.Click');
+            _tmr.push({ type: 'reachGoal', id: 3686970, goal: 'go_to_tg_bot'});
             console.log('Клик по кнопке "Запустить бота"');
         });
 
