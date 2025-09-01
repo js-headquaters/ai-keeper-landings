@@ -329,6 +329,21 @@
             }
         }
     </style>
+    <!-- Top.Mail.Ru counter -->
+    <script type="text/javascript">
+    var _tmr = window._tmr || (window._tmr = []);
+    _tmr.push({id: "3686970", type: "pageView", start: (new Date()).getTime()});
+    (function (d, w, id) {
+      if (d.getElementById(id)) return;
+      var ts = d.createElement("script"); ts.type = "text/javascript"; ts.async = true; ts.id = id;
+      ts.src = "https://top-fwz1.mail.ru/js/code.js";
+      var f = function () {var s = d.getElementsByTagName("script")[0]; s.parentNode.insertBefore(ts, s);};
+      if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); }
+    })(document, window, "tmr-code");
+    </script>
+    <noscript><div><img src="https://top-fwz1.mail.ru/counter?id=3686970;js=na" style="position:absolute;left:-9999px;" alt="Top.Mail.Ru" /></div></noscript>
+    <!-- /Top.Mail.Ru counter -->
+    
 </head>
 <body>
     <div class="container">
@@ -441,6 +456,22 @@
     <!-- Load Amplitude first -->
     <script src="https://cdn.amplitude.com/script/b7dfb3af9236b4027d45a291abe09602.js"></script>
     <script>
+        // Parse UTM parameters from URL
+        function getUtmParameters() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const utmParams = {};
+            
+            // Get all UTM parameters
+            ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'ad_source'].forEach(param => {
+                const value = urlParams.get(param);
+                if (value) {
+                    utmParams[param] = value;
+                }
+            });
+            
+            return utmParams;
+        }
+
         // Initialize Amplitude
         window.amplitude.add(window.sessionReplay.plugin({sampleRate: 1}));
         window.amplitude.init('b7dfb3af9236b4027d45a291abe09602', {"fetchRemoteConfig":true,"autocapture":true});
@@ -463,8 +494,13 @@
             return userId;
         }
 
-        amplitude.setUserId(getOrCreateUserId());
-        amplitude.track('Landing.PageView');
+        // Set user ID and UTM parameters
+        const userId = getOrCreateUserId();
+        const utmParams = getUtmParameters();
+        
+        amplitude.setUserId(userId);
+        
+        amplitude.track('Landing.PageView', { ad_source: utmParams.ad_source || 'direct' });
 
         // Простая аналитика кликов
         document.querySelector('.cta-button').addEventListener('click', function() {
