@@ -520,6 +520,8 @@
             const myForm = e.target;
             const formData = new FormData(myForm);
 
+            _tmr.push({ type: 'reachGoal', id: 3686985, goal: 'contact'});
+
             fetch("/", {
                 method: "POST",
                 headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -532,6 +534,7 @@
         // Функции для модального окна "Нет Telegram"
         function showNoTelegramInfo() {
             amplitude.track('Landing.NoTelegramInfo.Show');
+            _tmr.push({ type: 'reachGoal', id: 3686985, goal: 'no_tg'});
             document.getElementById('no-telegram-info').style.display = 'flex';
         }
 
