@@ -522,6 +522,7 @@
             // Здесь можно добавить отправку события в Google Analytics или другую систему
             amplitude.track('Landing.CTA.Click');
             _tmr.push({ type: 'reachGoal', id: 3686985, goal: 'go_to_tg_bot'});
+            ym(103971919, 'reachGoal', 'go_to_tg_bot')
             console.log('Клик по кнопке "Запустить бота"');
         });
 
@@ -536,6 +537,7 @@
             const formData = new FormData(myForm);
 
             _tmr.push({ type: 'reachGoal', id: 3686985, goal: 'contact'});
+            ym(103971919, 'reachGoal', 'contact')
 
             fetch("/", {
                 method: "POST",
@@ -550,6 +552,7 @@
         function showNoTelegramInfo() {
             amplitude.track('Landing.NoTelegramInfo.Show');
             _tmr.push({ type: 'reachGoal', id: 3686985, goal: 'no_tg'});
+            ym(103971919, 'reachGoal', 'no_tg');
             document.getElementById('no-telegram-info').style.display = 'flex';
         }
 
