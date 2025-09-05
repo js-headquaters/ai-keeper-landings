@@ -580,9 +580,6 @@
             
             userActions.push(actionData);
             lastActionTime = Date.now();
-            
-            // Send to analytics
-            amplitude.track('Landing.UserAction', actionData);
         }
         
         // Track scroll depth
@@ -755,7 +752,7 @@
         // Функции для модального окна "Нет Telegram"
         function showNoMessengerInfo() {
             amplitude.track('Landing.NoMessengerInfo.Show');
-            trackAnalyticsEvent('no_tg');
+            trackAnalyticsEvent('no_messenger');
             trackUserAction('no_messenger_info_show', { 
                 timeOnPage: updateTimeOnPage(),
                 scrollDepth: scrollDepth 
