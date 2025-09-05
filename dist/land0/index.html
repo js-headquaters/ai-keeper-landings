@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Учёт расходов голосом в Телеграме</title>
+    <title>Учёт расходов голосом в вашем мессендере</title>
     <style>
         * {
             margin: 0;
@@ -164,8 +164,10 @@
         }
         
         .cta-button {
-            display: inline-block;
-            background: #e74c3c;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: #3498db;
             color: white;
             padding: 20px 50px;
             font-size: 1.4rem;
@@ -173,13 +175,39 @@
             border-radius: 50px;
             font-weight: 600;
             transition: all 0.3s ease;
-            box-shadow: 0 8px 25px rgba(231, 76, 60, 0.3);
+            box-shadow: 0 8px 25px rgba(52, 152, 219, 0.3);
+        }
+        
+        .cta-button.whatsapp {
+            background: #25d366;
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
+        }
+        
+        .cta-button.whatsapp:hover {
+            background: #20c55a;
+            box-shadow: 0 12px 35px rgba(37, 211, 102, 0.4);
+        }
+        
+        .cta-button.telegram {
+            background: #0088cc;
+            box-shadow: 0 8px 25px rgba(0, 136, 204, 0.3);
+        }
+        
+        .cta-button.telegram:hover {
+            background: #0077b3;
+            box-shadow: 0 12px 35px rgba(0, 136, 204, 0.4);
+        }
+        
+        .icon {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
         }
         
         .cta-button:hover {
-            background: #c0392b;
+            background: #2980b9;
             transform: translateY(-3px);
-            box-shadow: 0 12px 35px rgba(231, 76, 60, 0.4);
+            box-shadow: 0 12px 35px rgba(52, 152, 219, 0.4);
         }
         
         .social-proof {
@@ -251,7 +279,7 @@
             box-shadow: 0 6px 20px rgba(108, 92, 231, 0.4);
         }
         
-        .no-telegram-info {
+        .no-messenger-info, .whatsapp-info {
             position: fixed;
             top: 0;
             left: 0;
@@ -330,19 +358,7 @@
         }
     </style>
 
-<!-- Yandex.Metrika counter -->
-<script type="text/javascript">
-    (function(m,e,t,r,i,k,a){
-        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-        m[i].l=1*new Date();
-        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=103971919', 'ym');
-
-    ym(103971919, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
-</script>
-<noscript><div><img src="https://mc.yandex.ru/watch/103971919" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-<!-- /Yandex.Metrika counter -->
+<!-- Yandex.Metrika counter --> <script type="text/javascript">     (function(m,e,t,r,i,k,a){         m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};         m[i].l=1*new Date();         for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}         k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)     })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=104049269', 'ym');      ym(104049269, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true}); </script> <noscript><div><img src="https://mc.yandex.ru/watch/104049269" style="position:absolute; left:-9999px;" alt="" /></div></noscript> <!-- /Yandex.Metrika counter -->
 
 <!-- Top.Mail.Ru counter -->
 <script type="text/javascript">
@@ -365,17 +381,18 @@
         <!-- Hero Section -->
         <section class="hero">
             <h1>Учёт расходов простым разговором</h1>
-            <p class="subtitle">Записывайте траты голосом за секунды. Прямо в Телеграме.</p>
+            <p class="subtitle">Записывайте траты голосом за секунды. Прямо в вашем мессендере.</p>
         </section>
 
         <!-- Pain Section -->
         <section class="pain-section">
             <h2 class="pain-title">Знакомо?</h2>
             <ul class="pain-list">
+                <li>Пытаетесь экономить, но не получается?</li>
                 <li>Покупаете что-то, но забываете записать расход</li>
                 <li>Таблицы и приложения кажутся слишком сложными</li>
                 <li>Руки заняты, а нужно зафиксировать трату</li>
-                <li>Не знаете, в какую категорию отнести покупку</li>
+                <li>Приложение банка плохо категоризирует траты?</li>
                 <li>В конце месяца не понимаете, куда ушли деньги</li>
             </ul>
             <p style="text-align: center; font-size: 1.3rem; color: #e74c3c; font-weight: 600;">
@@ -404,18 +421,13 @@
                 </div>
                 <div class="feature">
                     <div class="feature-icon">📱</div>
-                    <h3>Прямо в Telegram</h3>
+                    <h3>Прямо в вашем мессенджере</h3>
                     <p>Не нужно скачивать приложение — всё работает в привычном мессенджере.</p>
-                </div>
-                <div class="feature">
-                    <div class="feature-icon">🔒</div>
-                    <h3>Полная приватность</h3>
-                    <p>Ваши финансы видите только вы. Никаких облачных сервисов.</p>
                 </div>
                 <div class="feature">
                     <div class="feature-icon">📊</div>
                     <h3>Простая аналитика</h3>
-                    <p>Отчёты за день, неделю, месяц. Понимайте, куда уходят деньги.</p>
+                    <p>Отчёты за день, неделю, месяц. Понимайте, куда уходят деньги. Попроси отчёт в голосовом сообщении.</p>
                 </div>
             </div>
         </section>
@@ -424,7 +436,7 @@
         <section class="demo-section">
             <h2 class="demo-title">Как это работает</h2>
             <div class="demo-example">
-                <strong>🎤 Вы:</strong> "Потратил 1200 рублей на продукты в Пятёрочке"<br><br>
+                <strong>🎤 Вы:</strong> "Потратил 1200 рублей на продукты"<br><br>
                 <strong>🤖 Бот:</strong> "Записал расход: 1200₽ в категории 'Продукты' ✅"
             </div>
             <div class="demo-example">
@@ -437,12 +449,27 @@
         <section class="cta-section">
             <h2 class="cta-title">Попробуйте прямо сейчас</h2>
             <p class="cta-subtitle">Бесплатно. Без регистрации. За 30 секунд.</p>
-            <a href="https://t.me/aikeeper_bot" class="cta-button">Запустить бота</a>
+            
+            <a onclick="openTelegram()" href="https://t.me/aikeeper_bot" class="cta-button telegram">
+                <svg class="icon" viewBox="0 0 24 24">
+                    <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.568 8.16l-1.61 7.59c-.12.54-.43.67-.87.42l-2.4-1.77-1.16.73c-.13.13-.24.24-.49.24l.18-2.55 4.49-4.05c.2-.17-.04-.27-.3-.1l-5.54 3.49-2.38-.74c-.52-.16-.53-.52.11-.77l9.28-3.58c.43-.16.81.1.67.77z"/>
+                </svg>
+                Запустить бота в Телеграме
+            </a>
+
+            <a onclick="openWhatsApp()" style="margin-top: 20px;" class="cta-button whatsapp">
+                <svg class="icon" viewBox="0 0 24 24">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+                </svg>
+                Открыть в WhatsApp
+            </a>
+            
+            
             <div class="social-proof">
                 <p>💬 Напишите боту любой расход и убедитесь сами</p>
             </div>
 
-            <a href="#" class="no-telegram-link" onclick="showNoTelegramInfo(); return false;">У меня нет Telegram</a>
+            <a href="#" class="no-telegram-link" onclick="showNoMessengerInfo(); return false;">У меня нет этих мессендеров</a>
         </section>
 
         <!-- Contact Section -->
@@ -491,6 +518,11 @@
         window.amplitude.add(window.sessionReplay.plugin({sampleRate: 1}));
         window.amplitude.init('b7dfb3af9236b4027d45a291abe09602', {"fetchRemoteConfig":true,"autocapture":true});
         
+        function trackAnalyticsEvent(evtName) {
+            _tmr.push({ type: 'reachGoal', id: 3686985, goal: evtName});
+            ym(104049269, 'reachGoal', evtName)
+        }
+        
         // get or create uuid
         function getOrCreateUserId() {
             const storageKey = 'ai_keeper_user_id';
@@ -515,16 +547,189 @@
         
         amplitude.setUserId(userId);
         
+        // Track page view
         amplitude.track('Landing.PageView', { ad_source: utmParams.ad_source || 'direct' });
-
-        // Простая аналитика кликов
-        document.querySelector('.cta-button').addEventListener('click', function() {
-            // Здесь можно добавить отправку события в Google Analytics или другую систему
-            amplitude.track('Landing.CTA.Click');
-            _tmr.push({ type: 'reachGoal', id: 3686985, goal: 'go_to_tg_bot'});
-            ym(103971919, 'reachGoal', 'go_to_tg_bot')
-            console.log('Клик по кнопке "Запустить бота"');
+        
+        // ===== COMPREHENSIVE PAGE EXIT AND USER ACTION TRACKING =====
+        
+        // Track user engagement and exit events
+        let pageStartTime = Date.now();
+        let lastActionTime = Date.now();
+        let scrollDepth = 0;
+        let maxScrollDepth = 0;
+        let clickCount = 0;
+        let userActions = [];
+        let isPageVisible = true;
+        let exitIntentTriggered = false;
+        
+        // Track time on page
+        function updateTimeOnPage() {
+            const timeOnPage = Math.round((Date.now() - pageStartTime) / 1000);
+            return timeOnPage;
+        }
+        
+        // Track user actions
+        function trackUserAction(action, details = {}) {
+            const actionData = {
+                action: action,
+                timestamp: Date.now(),
+                timeOnPage: updateTimeOnPage(),
+                scrollDepth: scrollDepth,
+                details: details
+            };
+            
+            userActions.push(actionData);
+            lastActionTime = Date.now();
+            
+            // Send to analytics
+            amplitude.track('Landing.UserAction', actionData);
+        }
+        
+        // Track scroll depth
+        function trackScrollDepth() {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const documentHeight = document.documentElement.scrollHeight - window.innerHeight;
+            scrollDepth = Math.round((scrollTop / documentHeight) * 100);
+            
+            if (scrollDepth > maxScrollDepth) {
+                maxScrollDepth = scrollDepth;
+                trackUserAction('scroll_depth', { depth: scrollDepth });
+            }
+        }
+        
+        // Track exit intent (mouse moving to top of page)
+        function trackExitIntent(event) {
+            if (event.clientY <= 0 && !exitIntentTriggered) {
+                exitIntentTriggered = true;
+                trackUserAction('exit_intent', { 
+                    timeOnPage: updateTimeOnPage(),
+                    scrollDepth: scrollDepth 
+                });
+            }
+        }
+        
+        // Track page visibility changes
+        function handleVisibilityChange() {
+            if (document.hidden) {
+                isPageVisible = false;
+                trackUserAction('page_hidden', { 
+                    timeOnPage: updateTimeOnPage(),
+                    scrollDepth: scrollDepth 
+                });
+            } else {
+                isPageVisible = true;
+                trackUserAction('page_visible', { 
+                    timeOnPage: updateTimeOnPage(),
+                    scrollDepth: scrollDepth 
+                });
+            }
+        }
+        
+        // Track page exit events
+        function trackPageExit(reason, details = {}) {
+            const exitData = {
+                reason: reason,
+                timeOnPage: updateTimeOnPage(),
+                maxScrollDepth: maxScrollDepth,
+                clickCount: clickCount,
+                lastActionTime: lastActionTime,
+                userActions: userActions.slice(-5), // Last 5 actions
+                details: details
+            };
+            
+            // Send to all analytics services
+            amplitude.track('Landing.PageExit', exitData);
+            ym(104049269, 'reachGoal', 'page_exit', exitData);
+            _tmr.push({ type: 'reachGoal', id: 3686985, goal: 'page_exit', data: exitData });
+            
+            console.log('Page Exit Tracked:', exitData);
+        }
+        
+        // Track clicks
+        document.addEventListener('click', function(event) {
+            clickCount++;
+            const target = event.target;
+            const targetInfo = {
+                tagName: target.tagName,
+                className: target.className,
+                id: target.id,
+                text: target.textContent?.substring(0, 50) || '',
+                href: target.href || ''
+            };
+            
+            trackUserAction('click', targetInfo);
         });
+        
+        // Track scroll events
+        let scrollTimeout;
+        window.addEventListener('scroll', function() {
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(trackScrollDepth, 100);
+        });
+        
+        // Track mouse movement for exit intent
+        document.addEventListener('mousemove', trackExitIntent);
+        
+        // Track page visibility changes
+        document.addEventListener('visibilitychange', handleVisibilityChange);
+        
+        // Track beforeunload (user trying to leave)
+        window.addEventListener('beforeunload', function(event) {
+            trackPageExit('beforeunload', {
+                isPageVisible: isPageVisible,
+                hasFormData: document.querySelector('form').checkValidity()
+            });
+        });
+        
+        // Track unload (page is being unloaded)
+        window.addEventListener('unload', function(event) {
+            trackPageExit('unload', {
+                isPageVisible: isPageVisible
+            });
+        });
+        
+        // Track pagehide (more reliable than unload on mobile)
+        window.addEventListener('pagehide', function(event) {
+            trackPageExit('pagehide', {
+                persisted: event.persisted,
+                isPageVisible: isPageVisible
+            });
+        });
+        
+        // Track focus loss (user switching tabs/apps)
+        window.addEventListener('blur', function(event) {
+            trackUserAction('window_blur', { 
+                timeOnPage: updateTimeOnPage(),
+                scrollDepth: scrollDepth 
+            });
+        });
+        
+        // Track focus gain (user returning to page)
+        window.addEventListener('focus', function(event) {
+            trackUserAction('window_focus', { 
+                timeOnPage: updateTimeOnPage(),
+                scrollDepth: scrollDepth 
+            });
+        });
+        
+        // Track if user tries to close tab/window
+        window.addEventListener('beforeunload', function(event) {
+            // This will be called when user tries to close tab
+            trackUserAction('attempt_close', { 
+                timeOnPage: updateTimeOnPage(),
+                scrollDepth: scrollDepth 
+            });
+        });
+        
+        // Track time intervals (every 10 seconds)
+        setInterval(function() {
+            if (isPageVisible) {
+                trackUserAction('time_interval', { 
+                    timeOnPage: updateTimeOnPage(),
+                    scrollDepth: scrollDepth 
+                });
+            }
+        }, 10000);
 
         // Обработка формы
 
@@ -536,8 +741,7 @@
             const myForm = e.target;
             const formData = new FormData(myForm);
 
-            _tmr.push({ type: 'reachGoal', id: 3686985, goal: 'contact'});
-            ym(103971919, 'reachGoal', 'contact')
+            trackAnalyticsEvent('contact');
 
             fetch("/", {
                 method: "POST",
@@ -549,35 +753,77 @@
         });
 
         // Функции для модального окна "Нет Telegram"
-        function showNoTelegramInfo() {
-            amplitude.track('Landing.NoTelegramInfo.Show');
-            _tmr.push({ type: 'reachGoal', id: 3686985, goal: 'no_tg'});
-            ym(103971919, 'reachGoal', 'no_tg');
-            document.getElementById('no-telegram-info').style.display = 'flex';
+        function showNoMessengerInfo() {
+            amplitude.track('Landing.NoMessengerInfo.Show');
+            trackAnalyticsEvent('no_tg');
+            trackUserAction('no_messenger_info_show', { 
+                timeOnPage: updateTimeOnPage(),
+                scrollDepth: scrollDepth 
+            });
+            document.getElementById('no-messenger-info').style.display = 'flex';
         }
 
-        function hideNoTelegramInfo() {
-            amplitude.track('Landing.NoTelegramInfo.Close');
-            document.getElementById('no-telegram-info').style.display = 'none';
+        function openWhatsApp() {
+            amplitude.track('Landing.WhatsAppCTA.Click');
+            trackAnalyticsEvent('open_whatsapp');
+            trackUserAction('whatsapp_cta_click', { 
+                timeOnPage: updateTimeOnPage(),
+                scrollDepth: scrollDepth 
+            });
+            console.log('Клик по кнопке "Открыть в WhatsApp"');
+            document.getElementById('whatsapp-info').style.display = 'flex';
+        }
+
+
+        function openTelegram() {
+            amplitude.track('Landing.CTA.Click');
+            trackAnalyticsEvent('go_to_tg_bot');
+            trackUserAction('telegram_cta_click', {
+                timeOnPage: updateTimeOnPage(),
+                scrollDepth: scrollDepth 
+            });
+            console.log('Клик по кнопке "Запустить бота в Телеграме"');
+        }
+
+        function hideWhatsAppInfo() {
+            document.getElementById('whatsapp-info').style.display = 'none';
+        }
+
+        function hideNoMessengerInfo() {
+            amplitude.track('Landing.NoMessengerInfo.Close');
+            document.getElementById('no-messenger-info').style.display = 'none';
         }
 
         // Закрытие по клику вне модального окна
         document.addEventListener('click', function(event) {
-            const modal = document.getElementById('no-telegram-info');
+            const modal = document.getElementById('no-messenger-info');
             if (event.target === modal) {
-                hideNoTelegramInfo();
+                hideNoMessengerInfo();
+            }
+
+            const modalWhatsApp = document.getElementById('whatsapp-info');
+            if (event.target === modal) {
+                hideWhatsAppInfo();
             }
         });
     </script>
 
-    <!-- Информационный блок для пользователей без Telegram -->
-    <div id="no-telegram-info" class="no-telegram-info" style="display: none;">
+    <!-- Информационный блок для пользователей без мессенджеров -->
+    <div id="no-messenger-info" class="no-messenger-info" style="display: none;">
         <div class="info-content">
-            <h3>😔 Жаль, что у вас нет Телеграма</h3>
-            <p>Мы понимаем! Скоро мы сделаем веб-версию, чтобы вы могли пользоваться нашим сервисом прямо в браузере.</p>
-            <p>Если вам интересно, заполните форму ниже, и мы сообщим, когда веб-версия будет готова:</p>
+            <h3>😔 Жаль, что у вас нет Телеграма или WhatsApp</h3>
+            <p>Пожалуйста, заполните форму ниже и расскажите в каком мессендере вы хотите заполнять расходы с помощью голосовых сообщений</p>
             
-            <button class="close-btn" onclick="hideNoTelegramInfo()">✕</button>
+            <button class="close-btn" onclick="hideNoMessengerInfo()">✕</button>
+        </div>
+    </div>
+
+    <div id="whatsapp-info" class="whatsapp-info" style="display: none;">
+        <div class="info-content">
+            <h3>К сожалению, вданный момент бот доступен только в Телеграме</h3>
+            <p>Мы работаем над WhatsApp, но пока она доступна только в Телеграме.</p>
+            <p>Пожалуйста, заполните форму ниже, и мы сообщим, когда версия в WhatsApp будет готова</p>
+            <button class="close-btn" onclick="hideWhatsAppInfo()">✕</button>
         </div>
     </div>
 </body>
